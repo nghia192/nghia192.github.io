@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Cao Minh Hùng</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* Custom CSS cho giao diện mới */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #e2e8f0; /* slate-200 */
+            background: linear-gradient(-45deg, #1e3a8a, #312e81, #082f49, #312e81);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Hiệu ứng Glassmorphism */
+        .glass-card {
+            background-color: rgba(15, 23, 42, 0.6); /* slate-900 with 60% opacity */
+            backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Animation cho section */
+        .section-content {
+            display: none;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        .section-content.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hiệu ứng cho card bài tập */
+        .assignment-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .assignment-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-color: rgba(56, 189, 248, 0.5);
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <!-- Main Container -->
+    <div class="container mx-auto max-w-4xl">
+        
+        <!-- Header -->
+        <header class="glass-card rounded-2xl shadow-lg p-6 w-full mb-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-4">
+                    <div class="flex-shrink-0 w-16 h-16" style="background-image: url('images/ute.png'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: white; border-radius: 50%;"></div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-white">Cao Minh Hùng</h1>
+                        <p class="text-sky-400 text-sm">Sinh viên An ninh mạng - ĐH SPKT TPHCM</p>
+                        <p class="text-xs text-slate-400">MSSV: 23162033</p>
+                    </div>
+                </div>
+                <!-- Navigation -->
+                <nav class="flex-shrink-0 flex space-x-2 bg-slate-800/50 p-1 rounded-lg">
+                    <button onclick="showSection('about')" id="nav-about" class="px-4 py-2 text-sm rounded-md font-semibold transition-colors">Giới thiệu</button>
+                    <button onclick="showSection('assignments')" id="nav-assignments" class="px-4 py-2 text-sm rounded-md font-semibold transition-colors">Bài tập</button>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <!-- Phần 1: Giới thiệu bản thân -->
+            <section id="about" class="section-content">
+                <div class="glass-card rounded-2xl shadow-md p-6 md:p-10 flex flex-col lg:flex-row items-center gap-8 md:gap-12">
+                    <div class="flex-shrink-0">
+                        <img src="images/cmh.png" alt="Ảnh đại diện Cao Minh Hùng" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover object-top shadow-lg border-4 border-slate-700">
+                    </div>
+                    <div class="text-center lg:text-left">
+                        <h2 class="text-3xl font-bold text-white mb-4">Xin chào, tôi là Hùng!</h2>
+                        <p class="text-slate-300 mb-6 leading-relaxed">
+                            Là một người hướng nội và yêu thích sự logic, tôi luôn tìm thấy niềm đam mê trong việc khám phá và giải quyết các vấn đề phức tạp. Đây cũng chính là lý do tôi chọn theo đuổi ngành An ninh mạng.
+                        </p>
+                        <div>
+                            <h3 class="text-xl font-semibold text-sky-400 mb-2">Mục tiêu với ngành An ninh mạng</h3>
+                            <p class="text-slate-400">
+                                Mục tiêu của tôi là nắm vững kiến thức về mạng, mã hóa, bảo mật hệ thống và trở thành một chuyên gia Pentesting, góp phần bảo vệ an toàn cho không gian mạng Việt Nam.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phần 2: Trang bài tập -->
+            <section id="assignments" class="section-content">
+                <div class="glass-card rounded-2xl p-6 md:p-10">
+                    <h2 class="text-3xl font-bold text-white text-center mb-8">Danh sách bài tập</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Card Bài tập -->
+                        <div class="assignment-card glass-card rounded-xl p-5 text-center">
+                            <h3 class="text-lg font-bold text-white mb-2">Bài 2</h3>
+                            <p class="text-slate-400 mb-4 text-xs">Bài tập tuần 1</p>
+                            <a href="https://github-intelij-week1-11.onrender.com/" target="_blank" class="inline-block bg-sky-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-sky-500 transition-colors text-sm w-full">Xem bài</a>
+                        </div>
+                        <div class="assignment-card glass-card rounded-xl p-5 text-center">
+                            <h3 class="text-lg font-bold text-white mb-2">Bài 3</h3>
+                            <p class="text-slate-400 mb-4 text-xs">Bài tập tuần 2</p>
+                            <a href="https://github-intelij-week2-1.onrender.com/" target="_blank" class="inline-block bg-sky-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-sky-500 transition-colors text-sm w-full">Xem bài</a>
+                        </div>
+                        <div class="assignment-card glass-card rounded-xl p-5 text-center">
+                            <h3 class="text-lg font-bold text-white mb-2">Bài 4</h3>
+                            <p class="text-slate-400 mb-4 text-xs">Bài tập tuần 2 (phần 2)</p>
+                            <a href="https://github-intelij-week2-3.onrender.com" target="_blank" class="inline-block bg-sky-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-sky-500 transition-colors text-sm w-full">Xem bài</a>
+                        </div>
+                        <div class="assignment-card glass-card rounded-xl p-5">
+                            <h3 class="text-lg font-bold text-white mb-2 text-center">Bài 5</h3>
+                            <p class="text-slate-400 mb-4 text-xs text-center">Gồm 2 bài 6.1 và 6.2</p>
+                            <div class="flex space-x-2">
+                                 <a href="https://github-interlij-c6-1.onrender.com" target="_blank" class="flex-1 text-center bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg hover:bg-blue-500 transition-colors text-sm">6.1</a>
+                                 <a href="https://github-interlij-c6-2.onrender.com" target="_blank" class="flex-1 text-center bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg hover:bg-blue-500 transition-colors text-sm">6.2</a>
+                            </div>
+                        </div>
+                        <div class="assignment-card glass-card rounded-xl p-5">
+                            <h3 class="text-lg font-bold text-white mb-2 text-center">Bài 6</h3>
+                            <p class="text-slate-400 mb-4 text-xs text-center">Gồm 2 bài ex8 và 9.2</p>
+                             <div class="flex space-x-2">
+                                 <a href="https://github-intelij-c89.onrender.com" target="_blank" class="flex-1 text-center bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg hover:bg-blue-500 transition-colors text-sm">ex8</a>
+                                 <a href="https://github-intelij-week4-9-2.onrender.com" target="_blank" class="flex-1 text-center bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg hover:bg-blue-500 transition-colors text-sm">9.2</a>
+                            </div>
+                        </div>
+                         <div class="assignment-card glass-card rounded-xl p-5">
+                            <h3 class="text-lg font-bold text-white mb-2 text-center">Bài 7</h3>
+                            <p class="text-slate-400 mb-4 text-xs text-center">Gồm 2 bài 7.1 và 7.2</p>
+                             <div class="flex space-x-2">
+                                 <a href="https://baitap7-1.onrender.com" target="_blank" class="flex-1 text-center bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg hover:bg-blue-500 transition-colors text-sm">7.1</a>
+                                 <a href="https://btap7-2.onrender.com" target="_blank" class="flex-1 text-center bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg hover:bg-blue-500 transition-colors text-sm">7.2</a>
+                            </div>
+                        </div>
+                        <div class="assignment-card glass-card rounded-xl p-5 text-center">
+                            <h3 class="text-lg font-bold text-white mb-2">Bài 8</h3>
+                            <p class="text-slate-400 mb-4 text-xs">Bài tập C12 - SQL</p>
+                            <a href="https://btapc12-sql.onrender.com" target="_blank" class="inline-block bg-sky-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-sky-500 transition-colors text-sm w-full">Xem bài</a>
+                        </div>
+                         <div class="assignment-card glass-card rounded-xl p-5">
+                            <h3 class="text-lg font-bold text-white mb-2 text-center">Bài 9</h3>
+                            <p class="text-slate-400 mb-4 text-xs text-center">Gồm 2 bài C13.1 và C13.2</p>
+                             <div class="flex space-x-2">
+                                 <a href="https://email-c-13-1.onrender.com" target="_blank" class="flex-1 text-center bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg hover:bg-blue-500 transition-colors text-sm">13.1</a>
+                                 <a href="https://email-btapc13-2.onrender.com" target="_blank" class="flex-1 text-center bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg hover:bg-blue-500 transition-colors text-sm">13.2</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="text-center mt-8 text-slate-500 text-xs">
+            <p>&copy; 2024 Cao Minh Hùng. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const sections = {
+            about: document.getElementById('about'),
+            assignments: document.getElementById('assignments')
+        };
+        const navButtons = {
+            about: document.getElementById('nav-about'),
+            assignments: document.getElementById('nav-assignments')
+        };
+        const activeClass = 'bg-white/10'; // Lớp CSS cho nút đang active
+        const inactiveClass = 'text-slate-400';
+
+        function showSection(sectionName) {
+            for (const key in sections) {
+                sections[key].classList.remove('active');
+            }
+            sections[sectionName].classList.add('active');
+            
+            for (const key in navButtons) {
+                navButtons[key].classList.remove(activeClass);
+                navButtons[key].classList.add(inactiveClass);
+            }
+            navButtons[sectionName].classList.add(activeClass);
+            navButtons[sectionName].classList.remove(inactiveClass);
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('about');
+        });
+    </script>
+
+</body>
+</html>
+
